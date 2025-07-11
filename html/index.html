@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Lost Children of the Sky</title>
+  <style>
+    body {
+      background-color: black;
+      color: limegreen;
+      font-family: 'Courier New', Courier, monospace;
+      text-align: center;
+      padding: 40px;
+    }
+    a {
+      color: cyan;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .blink {
+      animation: blink-animation 1s steps(2, start) infinite;
+    }
+    @keyframes blink-animation {
+      to {
+        visibility: hidden;
+      }
+    }
+    h1, h2, p, ul {
+      margin-bottom: 20px;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin: 10px 0;
+    }
+    .note {
+      font-size: 0.9em;
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+  <h1>The Lost Children of the Sky</h1>
+  <p>記憶をなくしたあの子たちの記録。</p>
+  <p class=>もしまだ"音"が聞こえるなら、君は繋がっている。</p>
+  <ul>
+    <li><a href="diary.html">日記の断片</a></li>
+    <li><a href="sketches.html">落書き</a></li>
+    <li><a href="404.html">Exit（ページなし）</a></li>
+  </ul>
+</body>
+</html>
+
+<!-- diary.html -->
+<!-- Save as a separate file -->
+<!-- ============== -->
+<!--
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日記の断片</title>
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: monospace;
+      padding: 30px;
+    }
+    h2 {
+      color: #ff6666;
+    }
+    .entry {
+      margin-bottom: 40px;
+    }
+  </style>
+</head>
+<body>
+  <h1>日記の断片</h1>
+  <div class="entry">
+    <h2>20X5年11月28日</h2>
+    <p>また"光の子"を見かけた。声をかけたが、何も聞こえていなかった。</p>
+  </div>
+  <div class="entry">
+    <h2>20X5年11月29日</h2>
+    <p>足元に羽根。風が鳴っている。出口がわからない。</p>
+  </div>
+  <div class="entry">
+    <h2>???</h2>
+    <p>だれか、いるの？ ぼくの声、まだ届く？</p>
+  </div>
+</body>
+</html>
+-->
+
+<!-- sketches.html -->
+<!-- Save as a separate file -->
+<!-- ============== -->
+<!--
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>落書き</title>
+  <style>
+    body {
+      background-color: black;
+      color: #ccc;
+      font-family: monospace;
+      text-align: center;
+      padding: 20px;
+    }
+    .sketch {
+      margin: 20px auto;
+      border: 1px dashed gray;
+      padding: 20px;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>落書き</h1>
+  <div class="sketch">
+    <p>[スケッチ：翼の生えた子ども → 顔が黒く塗り潰されている]</p>
+    <p class="note">「翼を渡されても、飛ぶ方法を教えてもらえなかった」</p>
+  </div>
+  <div class="sketch">
+    <p>[スケッチ：灯されたキャンドル → 炎の中に目がある]</p>
+    <p class="note">「あの光は導いていたのか、それとも監視していたのか」</p>
+  </div>
+</body>
+</html>
+-->
+
+<!-- 404.html -->
+<!-- Save as a separate file -->
+<!-- ============== -->
+<!--
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>404 Not Found</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    #message {
+      opacity: 0;
+      animation: fadeIn 5s ease forwards;
+      margin-top: 20px;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>not found</h1>
+  <p>出口は、なかった。</p>
+  <div id="message">
+    <p><strong>君はもう、帰れない。</strong></p>
+  </div>
+</body>
+</html>
+-->

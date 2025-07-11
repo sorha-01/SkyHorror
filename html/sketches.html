@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>落書き</title>
+  <style>
+    body {
+      background-color: black;
+      color: #ccc;
+      font-family: monospace;
+      text-align: center;
+      padding: 20px;
+    }
+    .sketch {
+      margin: 30px auto;
+      max-width: 600px;
+      position: relative;
+    }
+    .sketch img {
+      width: 100%;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+    .note {
+      color: #999;
+      font-style: italic;
+      margin-top: 10px;
+    }
+    /* クリック時のグリッチエフェクト */
+    .glitch {
+      cursor: pointer;
+    }
+    @keyframes glitchAnim {
+      0% { transform: translate(0); }
+      20% { transform: translate(-3px, 3px); }
+      40% { transform: translate(3px, -3px); }
+      60% { transform: translate(-3px, -3px); }
+      80% { transform: translate(3px, 3px); }
+      100% { transform: translate(0); }
+    }
+    .glitch-effect {
+      animation: glitchAnim 0.5s;
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+  </style>
+</head>
+<body>
+  <h1>落書き</h1>
+
+  <div class="sketch">
+    <img src="階段.png" alt="浮遊する崩れた階段" class="glitch">
+    <p class="note">「誰も最後まで辿り着けなかった」</p>
+  </div>
+
+  <div class="sketch">
+    <img src="星の子.png" alt="顔が黒塗りされた光の子ども" class="glitch">
+    <p class="note">「翼を渡されても、飛ぶ方法を教えてもらえなかった」</p>
+  </div>
+
+  <div class="sketch">
+    <img src="キャンドル.png" alt="炎の中に目が浮かぶキャンドル" class="glitch">
+    <p class="note">「あの光は導いていたのか、それとも監視していたのか」</p>
+  </div>
+
+  <script>
+    document.querySelectorAll('.glitch').forEach(el => {
+      el.addEventListener('click', () => {
+        el.classList.add('glitch-effect');
+        setTimeout(() => el.classList.remove('glitch-effect'), 500);
+      });
+    });
+  </script>
+</body>
+</html>

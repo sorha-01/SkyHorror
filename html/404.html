@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>404 Not Found</title>
+  <style>
+    body { margin:0; background-color:black; overflow:hidden; }
+    #noiseCanvas { position:fixed; top:0; left:0; width:100%; height:100%; z-index:0; }
+    .content {
+      position:relative; z-index:1;
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      height:100vh; text-align:center; color:red; font-family:monospace;
+    }
+    #message { opacity:0; animation:fadeIn 5s ease forwards; margin-top:20px; }
+    @keyframes fadeIn { to { opacity:1; } }
+  </style>
+</head>
+<body>
+  <canvas id="noiseCanvas"></canvas>
+  <div class="content">
+    <h1>404 not found</h1>
+    <p>出口は、なかった。</p>
+    <div id="message"><p><strong>そこにはもう、帰れない。</strong></p></div>
+  </div>
+
+  <script>
+    // Visual dark noise
+    const canvas = document.getElementById('noiseCanvas');
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    window.addEventListener('resize', resize);
+    resize();
+    (function generateNoise(){
+      const w=canvas.width, h=canvas.height;
+      const img=ctx.createImageData(w,h), d=img.data;
+      for(let i=0;i<d.length;i+=4){ d[i]=d[i+1]=d[i+2]=0; d[i+3]=Math.random()*50; }
+      ctx.putImageData(img,0,0);
+      requestAnimationFrame(generateNoise);
+    })();
+
+    // Audio heavy low-frequency brown noise
+    try {
+      const audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+      const bufferSize=4096; let lastOut=0.0;
+      const brownNoise=audioCtx.createScriptProcessor(bufferSize,1,1);
+      brownNoise.onaudioprocess=e=>{
+        const output=e.outputBuffer.getChannelData(0);
+        for(let i=0;i<bufferSize;i++){
+          const white=Math.random()*2-1;
+          lastOut=(lastOut+0.02*white)*0.98;
+          output[i]=lastOut;
+        }
+      };
+      // Lowpass filter for cavernous bass
+      const lowpass=audioCtx.createBiquadFilter();
+      lowpass.type='lowpass';
+      lowpass.frequency.value=200; // 200Hz まで通す
+      lowpass.Q.value=0.8;
+
+      // Lower gain
+      const gainNode=audioCtx.createGain();
+      gainNode.gain.value=0.5;
+
+      brownNoise.connect(lowpass);
+      lowpass.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+    } catch(e) { console.warn('AudioContext not supported:', e); }
+  </script>
+</body>
+</html>
